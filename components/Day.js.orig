@@ -81,17 +81,30 @@ export default class Day extends Component {
       width,
       height
     } = this.props;
-
+<<<<<<< HEAD
+    const size = {width, height};
     if(filler) {
       return (
         <View style={[styles.dayButtonFiller, size, customStyle.dayButtonFiller]}>
+=======
+
+    if(filler) {
+      return (
+        <View style={[styles.dayButtonFiller, customStyle.dayButtonFiller]}>
+>>>>>>> disabled-days
           <Text style={[styles.day, customStyle.day]} />
         </View>
       );
     } else {
+<<<<<<< HEAD
+      return (
+        <TouchableOpacity onPress={this.props.onPress} style={[styles.dayButton, size, customStyle.dayButton]}>
+          <View style={this.dayCircleStyle(isWeekend, isSelected, isToday, event)}>
+            <Text style={this.dayTextStyle(isWeekend, isSelected, isToday, event)}>{caption}</Text>
+=======
       if(disabled) {
         return (
-          <View style={[styles.dayButton, size, customStyle.dayButton]}>
+          <View style={[styles.dayButton, customStyle.dayButton]}>
             <View style={this.dayCircleStyle(isSelected, isToday, event)}>
               <Text style={this.dayTextStyle(disabled, isSelected, isToday, event)}>{caption}</Text>
             </View>
@@ -111,9 +124,10 @@ export default class Day extends Component {
          <TouchableOpacity
           onPress={this.props.onPress}
           onLongPress={this.props.onLongPress}
-          style={[styles.dayButton, size, customStyle.dayButton]}>
+          style={[styles.dayButton, customStyle.dayButton]}>
           <View style={this.dayCircleStyle(isSelected, isToday, event)}>
             <Text style={this.dayTextStyle(disabled, isSelected, isToday, event)}>{caption}</Text>
+>>>>>>> disabled-days
           </View>
           {showEventIndicators &&
             <View style={[
@@ -123,9 +137,14 @@ export default class Day extends Component {
               event && customStyle.eventIndicator,
               event && event.eventIndicator]} />
           }
+<<<<<<< HEAD
+        </TouchableOpacity>
+      );
+=======
           </TouchableOpacity>
         );
       }
+>>>>>>> disabled-days
     }
   }
 }

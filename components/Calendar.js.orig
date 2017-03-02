@@ -203,13 +203,17 @@ export default class Calendar extends Component {
     }
   }
 
+<<<<<<< HEAD
   onContainerLayout = (event) => {
     if (this.state.containerWidth !== event.nativeEvent.layout.width) {
       this.setState({ containerWidth: event.nativeEvent.layout.width });
     }
   }
 
+  renderMonthView(argMoment, eventsMap) {
+=======
   renderMonthView(argMoment, eventsMap, disabledDatesMap) {
+>>>>>>> disabled-days
 
     let
       renderIndex = 0,
@@ -247,6 +251,25 @@ export default class Calendar extends Component {
       const currentDate = moment(startOfArgMonthMoment).set('date', dayIndex + 1);
 
       if (dayIndex >= 0 && dayIndex < argMonthDaysCount) {
+<<<<<<< HEAD
+        days.push((
+          <Day
+            startOfMonth={startOfArgMonthMoment}
+            isWeekend={isoWeekday === 0 || isoWeekday === 6}
+            key={`${renderIndex}`}
+            onPress={() => {
+              this.selectDate(moment(startOfArgMonthMoment).set('date', dayIndex + 1));
+            }}
+            caption={`${dayIndex + 1}`}
+            isToday={argMonthIsToday && (dayIndex === todayIndex)}
+            isSelected={dayIndex === selectedIndex}
+            event={events && events[dayIndex]}
+            showEventIndicators={this.props.showEventIndicators}
+            customStyle={this.props.customStyle}
+            width={size}
+            height={size} />
+        ));
+=======
         if(currentDate.isBetween(minDate, maxDate, 'day', '[]'))
         {
           const dayDisabled = this.props.disabledDays.includes(isoWeekday);
@@ -261,37 +284,33 @@ export default class Calendar extends Component {
                 onLongPress={() => this.longPress(currentDate)}
                 caption={`${dayIndex + 1}`}
                 isToday={argMonthIsToday && (dayIndex === todayIndex)}
-                isSelected={dayIndex === selectedIndex}
+                isSelected={selectedMonthIsArg && (dayIndex === selectedIndex)}
                 event={events && events[dayIndex]}
                 showEventIndicators={this.props.showEventIndicators}
                 customStyle={this.props.customStyle}
-                width={size}
-                height={size} />
+              />
             ));
           } else {
-            days.push(
-              <Day
-                key={`${renderIndex}`}
-                caption={`${dayIndex + 1}`}
-                isToday={argMonthIsToday && (dayIndex === todayIndex)}
-                showEventIndicators={this.props.showEventIndicators}
-                disabled
-                customStyle={this.props.customStyle}
-                width={size}
-                height={size} />);
+            days.push(<Day
+                        key={`${renderIndex}`}
+                        caption={`${dayIndex + 1}`}
+                        isToday={argMonthIsToday && (dayIndex === todayIndex)}
+                        showEventIndicators={this.props.showEventIndicators}
+                        disabled
+                        customStyle={this.props.customStyle}
+                        />);
           }
         } else {
-           days.push(
-             <Day
-               key={`${renderIndex}`}
-               caption={`${dayIndex + 1}`}
-               isToday={argMonthIsToday && (dayIndex === todayIndex)}
-               showEventIndicators={this.props.showEventIndicators}
-               disabled
-               customStyle={this.props.customStyle}
-               width={size}
-               height={size} />);
+           days.push(<Day
+                        key={`${renderIndex}`}
+                        caption={`${dayIndex + 1}`}
+                        isToday={argMonthIsToday && (dayIndex === todayIndex)}
+                        showEventIndicators={this.props.showEventIndicators}
+                        disabled
+                        customStyle={this.props.customStyle}
+                        />);
         }
+>>>>>>> disabled-days
       } else {
         days.push(
           <Day
